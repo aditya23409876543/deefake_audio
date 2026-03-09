@@ -8,6 +8,7 @@ app_file: app.py
 pinned: false
 license: apache-2.0
 short_description: 'Deep learning system to detect REAL or FAKE '
+sdk_version: 1.55.0
 ---
 # 🎵 Audio Deepfake Detection System
 
