@@ -49,7 +49,7 @@ def load_model_with_calibration(model_type='enhanced'):
     
     # Handle ensemble models
     if model_type.startswith('ensemble_'):
-        from src.ensemble import create_ensemble
+        from ensemble import create_ensemble
         ensemble_type = model_type.split('_')[1]
         model = create_ensemble(ensemble_type)
     elif model_type == 'pytorch_model':
