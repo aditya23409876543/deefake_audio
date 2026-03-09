@@ -433,7 +433,7 @@ def create_pretrained_weights(model_type='enhanced'):
     Create simple pretrained weights that give reasonable predictions
     This is a temporary solution until proper training is done
     """
-    from src.model import get_model
+    from model import get_model
     
     model = get_model(model_type)
     
