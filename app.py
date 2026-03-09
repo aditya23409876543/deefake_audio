@@ -12,9 +12,6 @@ import torch.nn.functional as F
 # Page Configuration
 st.set_page_config(page_title="Audio Deepfake Detector", page_icon="🎙️", layout="wide")
 
-# Initialize pretrained weights if needed
-if not os.path.exists('model/enhanced_pretrained.pth'):
-    save_pretrained_weights()
 
 # Load Model with calibration
 def get_model_status(model_type):
