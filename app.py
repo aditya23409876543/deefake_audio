@@ -4,8 +4,8 @@ import torch
 import numpy as np
 import librosa
 import os
-from src.model import DeepfakeDetectorCNN, get_model
-from src.calibration import RobustPredictor, explain_prediction, save_pretrained_weights
+from model import DeepfakeDetectorCNN, get_model
+from calibration import RobustPredictor, explain_prediction, save_pretrained_weights
 from utils import plot_spectrogram, plot_waveform, AudioDataset, preprocess_audio
 import torch.nn.functional as F
 
