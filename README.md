@@ -1,3 +1,14 @@
+---
+title: Audio Deepfake Detection
+emoji: 🎤
+colorFrom: blue
+colorTo: purple
+sdk: streamlit
+app_file: app.py
+pinned: false
+license: apache-2.0
+short_description: 'Deep learning system to detect REAL or FAKE '
+---
 # 🎵 Audio Deepfake Detection System
 
 A state-of-the-art deep learning system to detect synthetic audio, voice conversion, and deepfakes using advanced 2D CNN architectures with multiple ensemble strategies.
