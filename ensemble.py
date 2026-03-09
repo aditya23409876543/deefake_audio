@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from src.model import DeepfakeDetectorCNN, LightweightDetector, get_model
+from model import DeepfakeDetectorCNN, LightweightDetector, get_model
 import numpy as np
 
 class EnsembleDetector(nn.Module):
