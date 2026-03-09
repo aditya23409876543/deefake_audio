@@ -80,10 +80,8 @@ For detailed installation and configuration instructions, see [SETUP.md](SETUP.m
 | Model | Features | Speed | Accuracy | Best For |
 |-------|----------|-------|----------|----------|
 | Enhanced | 3 | Medium | High | General use |
-| Lightweight | 1 | Very Fast | Medium | Real-time |
-| Standard Ensemble | 3+ | Slow | Very High | High accuracy |
 | MultiScale Ensemble | 3+ | Slowest | Very High | Complex patterns |
-| Adaptive Ensemble | 3+ | Slow | Very High | Variable quality |
+| Pytorch trained model | 3+ | Slow | Very High | Variable quality |
 
 ---
 
@@ -162,7 +160,7 @@ audio-deepfake-detection/
 │
 ├── 💾 model/
 │   ├── enhanced_model.pth        # Enhanced model (15.09 MB)
-│   ├── lightweight_model.pth     # Lightweight model (0.40 MB)
+│   ├── pytorch_model
 │   └── ensemble_*.pth            # Ensemble models
 │
 ├── ⚙️ .streamlit/
@@ -181,7 +179,7 @@ audio-deepfake-detection/
 
 ## 🔧 Requirements
 
-- **Python**: 3.8+
+- **Python**: 3.11.0
 - **CUDA**: Optional (for GPU acceleration)
 - **RAM**: 8GB minimum
 - **Storage**: 500MB+
