@@ -1,18 +1,15 @@
 import streamlit as st
-
+# Page Configuration
+st.set_page_config(page_title="Audio Deepfake Detector", page_icon="🎙️", layout="wide")
 import torch
+torch.set_num_threads(1)
 import numpy as np
 import librosa
 import os
 from model import DeepfakeDetectorCNN, get_model
-from calibration import RobustPredictor, explain_prediction, save_pretrained_weights
+from calibration import RobustPredictor, explain_prediction
 from utils import plot_spectrogram, plot_waveform, AudioDataset, preprocess_audio
 import torch.nn.functional as F
-
-# Page Configuration
-st.set_page_config(page_title="Audio Deepfake Detector", page_icon="🎙️", layout="wide")
-
-
 # Load Model with calibration
 def get_model_status(model_type):
     """Check if model has trained weights"""
@@ -514,7 +511,7 @@ if st.session_state.get('file_uploaded', False) and st.session_state.get('upload
     
     # Save uploaded file temporarily (only if not already saved or file changed)
     temp_path = "temp_audio.wav"
-    if not os.path.exists(temp_path) or st.session_state.get('last_file_name') != uploaded_file.name:
+    if st.session_state.get("last_file_name") != uploaded_file.name:
         with open(temp_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
         st.session_state.last_file_name = uploaded_file.name
@@ -572,7 +569,12 @@ if st.session_state.get('file_uploaded', False) and st.session_state.get('upload
             st.subheader(f"🧪 {model_type.title()} Prediction")
         
         # Prediction code runs for ALL models
-        predictor = load_model_with_calibration(model_type)
+        if "predictor" not in st.session_state or st.session_state.get("loaded_model") != model_type:
+            with st.spinner("Loading AI model..."):
+                st.session_state.predictor = load_model_with_calibration(model_type)
+                st.session_state.loaded_model = model_type
+            
+        predictor = st.session_state.predictor
         with st.spinner('Analyzing audio...'):
             spectral, mfcc, phase = preprocess_audio(temp_path)
             with torch.no_grad():
