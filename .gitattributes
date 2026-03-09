@@ -1,1 +1,2 @@
 model/enhanced_quick_trained.pth filter=lfs diff=lfs merge=lfs -text
+model/ensemble_multiscale_best_trained.pth filter=lfs diff=lfs merge=lfs -text
