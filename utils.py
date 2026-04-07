@@ -243,10 +243,22 @@ def plot_spectrogram(audio_path, title="Mel-Spectrogram"):
     spectrogram = librosa.feature.melspectrogram(y=audio, sr=sr, n_mels=128)
     spectrogram_db = librosa.power_to_db(spectrogram, ref=np.max)
     
-    fig, ax = plt.subplots(figsize=(10, 4))
-    img = librosa.display.specshow(spectrogram_db, sr=sr, x_axis='time', y_axis='mel', ax=ax)
-    fig.colorbar(img, ax=ax, format='%+2.0f dB')
-    ax.set(title=title)
+    # Premium Styling
+    plt.style.use('dark_background')
+    fig, ax = plt.subplots(figsize=(10, 4), facecolor='none')
+    ax.set_facecolor('none')
+    
+    img = librosa.display.specshow(spectrogram_db, sr=sr, x_axis='time', y_axis='mel', ax=ax, cmap='magma')
+    
+    # Hide spines for cleaner look
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+        
+    ax.set_title(title, fontsize=14, fontweight='bold', pad=20, color='#ffffff')
+    ax.set_xlabel('Time (s)', color='#cccccc')
+    ax.set_ylabel('Mel Frequency', color='#cccccc')
+    
+    plt.tight_layout()
     return fig
 
 def plot_waveform(audio_path, title="Waveform"):
@@ -254,7 +266,21 @@ def plot_waveform(audio_path, title="Waveform"):
     Generates a waveform plot for a given audio file.
     """
     audio, sr = librosa.load(audio_path, sr=16000)
-    fig, ax = plt.subplots(figsize=(10, 4))
-    librosa.display.waveshow(audio, sr=sr, ax=ax)
-    ax.set(title=title)
+    
+    # Premium Styling
+    plt.style.use('dark_background')
+    fig, ax = plt.subplots(figsize=(10, 4), facecolor='none')
+    ax.set_facecolor('none')
+    
+    librosa.display.waveshow(audio, sr=sr, ax=ax, color='#4A90E2', alpha=0.8)
+    
+    # Hide spines for cleaner look
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+        
+    ax.set_title(title, fontsize=14, fontweight='bold', pad=20, color='#ffffff')
+    ax.set_xlabel('Time (s)', color='#cccccc')
+    ax.set_ylabel('Amplitude', color='#cccccc')
+    
+    plt.tight_layout()
     return fig
