@@ -36,22 +36,9 @@ Ensure you have Python 3.11+ installed. For the best experience (support for MP3
 - **Mac**: `brew install ffmpeg`
 - **Linux**: `sudo apt install ffmpeg`
 
-### 2. Installation
-```bash
-# Clone the repository
-git clone https://huggingface.co/spaces/pranay-ai-ml/Audio-Deepfake-Detection
-cd Audio-Deepfake-Detection
 
-# Create a virtual environment
-python -m venv env
-.\env\Scripts\activate  # Windows
-source env/bin/activate  # Mac/Linux
 
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 3. Launching Voice Sentinel
+### 2. Launching Voice Sentinel
 ```bash
 streamlit run app.py --server.address 0.0.0.0
 ```
